@@ -4,6 +4,7 @@
 **/.classpath
 **/sesAutoTest/screenshots/*
 /*driver.exe
+sesAutoTest/chromedriver.exe
 
 # Compiled class file
 *.class
