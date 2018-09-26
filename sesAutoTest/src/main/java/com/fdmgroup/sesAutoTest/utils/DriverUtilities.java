@@ -10,32 +10,32 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverUtilities {
 
-        private static final String CONFIG_FILE_NAME = "config.properties";
-        private static DriverUtilities instanceOfDriverUtilities;
-        private WebDriver driver;
+    private static final String CONFIG_FILE_NAME = "config.properties";
+    private static DriverUtilities instanceOfDriverUtilities;
+    private WebDriver driver;
 
-        // Private constructor ensures singleton pattern
-        private DriverUtilities() {}
+    // Private constructor ensures singleton pattern
+    private DriverUtilities() {}
 
-        /**
-         * Singleton pattern getInstance()
-         */
-        public static DriverUtilities getInstance() {
-                if (instanceOfDriverUtilities == null) {
-                        instanceOfDriverUtilities = new DriverUtilities();
-                }
-                return instanceOfDriverUtilities;
+    /**
+     * Singleton pattern getInstance()
+     */
+    public static DriverUtilities getInstance() {
+        if (instanceOfDriverUtilities == null) {
+                instanceOfDriverUtilities = new DriverUtilities();
         }
+        return instanceOfDriverUtilities;
+    }
 
-        /**
-         * Gets a WebDriver instance as specified in config file
-         */
-        public WebDriver getDriver() {
-                if (driver == null) {
-                        createDriver();
-                }
-                return driver;
+    /**
+     * Gets a WebDriver instance as specified in config file
+     */
+    public WebDriver getDriver() {
+        if (driver == null) {
+                createDriver();
         }
+        return driver;
+    }
 
         /**
          * Initialises WebDriver implementation to Chrome/Firefox, whichever specified in config file
@@ -46,43 +46,43 @@ public class DriverUtilities {
         String driverName = getDriverName();
 
         switch (driverName) {
-                case "Google Chrome":
-                        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-                        this.driver = new ChromeDriver();
-                        break;
+            case "Google Chrome":
+                System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
+                this.driver = new ChromeDriver();
+                break;
 
-                case "Firefox":
-                        System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
-                        this.driver = new FirefoxDriver();
-                        break;
+            case "Firefox":
+                System.setProperty("webdriver.gecko.driver", "geckodriver.exe");
+                this.driver = new FirefoxDriver();
+                break;
 
-                default:
-                        break;
+            default:
+            	break;
         }
     }
 
-        /**
-         * Scans config file for driver name
-         */
-        private String getDriverName() {
-                Properties config = new Properties();
-                String driverName = "";
-            try {
-                config.load(new FileInputStream(CONFIG_FILE_NAME));
+    /**
+     * Scans config file for driver name
+     */
+    private String getDriverName() {
+        Properties config = new Properties();
+        String driverName = "";
+        try {
+            config.load(new FileInputStream(CONFIG_FILE_NAME));
 
-            } catch (FileNotFoundException e) {
-                        System.out.println("Config file '" + CONFIG_FILE_NAME + "' not found.");
-                        e.printStackTrace();
+        } catch (FileNotFoundException e) {
+        	System.out.println("Config file '" + CONFIG_FILE_NAME + "' not found.");
+            e.printStackTrace();
 
-            } catch (IOException e) {
-                        System.out.println("Error when loading config file");
-                        e.printStackTrace();
-                }
+        } catch (IOException e) {
+        	System.out.println("Error when loading config file");
+        	e.printStackTrace();
+        }
 
         for (String key : config.stringPropertyNames()) {
-                if (key.equals("browser")) {
-                        driverName = config.getProperty(key);
-                }
+            if (key.equals("browser")) {
+                    driverName = config.getProperty(key);
+            }
         }
         return driverName;
     }
