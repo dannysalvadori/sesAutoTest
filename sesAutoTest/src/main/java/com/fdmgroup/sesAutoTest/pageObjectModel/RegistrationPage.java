@@ -41,6 +41,10 @@ public class RegistrationPage {
 		return driver.findElement(By.id("lastName"));
 	}
 	
+	public final WebElement getBirthDateInput() {
+		return driver.findElement(By.id("birthDate"));
+	}
+	
 	public final WebElement getSubmitButton() {
 		return driver.findElement(By.id("submit"));
 	}

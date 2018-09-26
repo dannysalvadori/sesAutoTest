@@ -1,6 +1,6 @@
 package com.fdmgroup.sesAutoTest.testData;
 
-public class UserData {
+public class RegistrationData {
 
 	public static final String VALID_EMAIL = "testo.mctest@fdmgroup.com"; 
 	public static final String VALID_PASSWORD = "123456"; 

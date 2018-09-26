@@ -18,7 +18,7 @@ import org.openqa.selenium.WebElement;
 
 import com.fdmgroup.sesAutoTest.pageObjectModel.NavigationPanel;
 import com.fdmgroup.sesAutoTest.pageObjectModel.RegistrationPage;
-import com.fdmgroup.sesAutoTest.testData.UserData;
+import com.fdmgroup.sesAutoTest.testData.RegistrationData;
 import com.fdmgroup.sesAutoTest.utils.DriverUtilities;
 
 public class DemoTest {
@@ -89,11 +89,11 @@ public class DemoTest {
         	RegistrationPage regPage = RegistrationPage.getInstance(driver);
         	assertEquals("Wrong URL", driver.getCurrentUrl(), regPage.URL);
         	
-        	regPage.getEmailInput().sendKeys(UserData.VALID_EMAIL);
-        	regPage.getPasswordInput().sendKeys(UserData.VALID_PASSWORD);
-        	regPage.getPasswordConfirmInput().sendKeys(UserData.MISMATCHED_PASSWORD);
-        	regPage.getFirstNameInput().sendKeys(UserData.VALID_FIRST_NAME);
-        	regPage.getLastNameInput().sendKeys(UserData.VALID_LAST_NAME);
+        	regPage.getEmailInput().sendKeys(RegistrationData.VALID_EMAIL);
+        	regPage.getPasswordInput().sendKeys(RegistrationData.VALID_PASSWORD);
+        	regPage.getPasswordConfirmInput().sendKeys(RegistrationData.MISMATCHED_PASSWORD);
+        	regPage.getFirstNameInput().sendKeys(RegistrationData.VALID_FIRST_NAME);
+        	regPage.getLastNameInput().sendKeys(RegistrationData.VALID_LAST_NAME);
         	
         	// Just for testsies...
         	takeScreenshot("beforeSubmit");
